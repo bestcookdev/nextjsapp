@@ -2,8 +2,8 @@ import Image from "next/image";
 import styles from "../page.module.css";
 
 export default async function Page() {
-  let data = await fetch("https://claims-exchange-fn.azurewebsites.net/api/claims-exchange?");
-  let userAttr = await data.json();
+  const data = await fetch("https://claims-exchange-fn.azurewebsites.net/api/claims-exchange?");
+  const userAttr = await data.json();
   return (
     <div className={styles.page}>
       <main className={styles.main}>
