@@ -1,0 +1,47 @@
+import Image from "next/image";
+import styles from "../page.module.css";
+
+export default async function Page() {
+  let data = await fetch("https://claims-exchange-fn.azurewebsites.net/api/claims-exchange?");
+  let userAttr = await data.json();
+  return (
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <Image
+          className={styles.logo}
+          src="https://nextjs.org/icons/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol>
+          <li>
+            Get started by editing <code>{userAttr.displayName}</code>.
+          </li>
+          <li>email {userAttr.email}.</li>
+        </ol>
+
+        <div className={styles.ctas}>
+          <a
+            className={styles.primary}
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className={styles.logo}
+              src="https://nextjs.org/icons/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+         
+        </div>
+      </main>
+
+    </div>
+  );
+}
